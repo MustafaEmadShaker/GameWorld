@@ -1,0 +1,160 @@
+:root {
+    --off: #ffffff;
+    --on: #000000;
+
+    --mainColor: #e98282;
+    --mazeColor: #ffffff;
+
+    --mazeBorder: solid;
+  }
+
+.mainNode {
+    background-color: var(--mainColor);
+    border-style: none;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.node0 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--off) /* right */
+                  var(--off) /* bottom */
+                  var(--off);/* left */
+}
+
+.node1 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--on) /* right */
+                  var(--on) /* bottom */
+                  var(--on);/* left */
+}
+
+.node2 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--on) /* right */
+                  var(--off) /* bottom */
+                  var(--on);/* left */
+}
+
+.node3 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--on) /* right */
+                  var(--on) /* bottom */
+                  var(--on);/* left */
+}
+
+.node4 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--on) /* right */
+                  var(--on) /* bottom */
+                  var(--off);/* left */
+}
+
+.node5 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--off) /* right */
+                  var(--on) /* bottom */
+                  var(--on);/* left */
+}
+
+.node6 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--on) /* right */
+                  var(--off) /* bottom */
+                  var(--off);/* left */
+}
+
+.node7 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--off) /* right */
+                  var(--off) /* bottom */
+                  var(--on);/* left */
+}
+
+.node8 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--off) /* right */
+                  var(--on) /* bottom */
+                  var(--off);/* left */
+}
+
+.node9 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--on) /* right */
+                  var(--on) /* bottom */
+                  var(--off);/* left */
+}
+
+.node10 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--off) /* right */
+                  var(--on) /* bottom */
+                  var(--on);/* left */
+}
+
+.node11 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--on) /* right */
+                  var(--off) /* bottom */
+                  var(--on);/* left */
+}
+
+.node12 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--off) /* right */
+                  var(--on) /* bottom */
+                  var(--off);/* left */
+}
+
+.node13 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--on) /* top */
+                  var(--off) /* right */
+                  var(--off) /* bottom */
+                  var(--off);/* left */
+}
+
+.node14 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--off) /* right */
+                  var(--off) /* bottom */
+                  var(--on);/* left */
+}
+
+.node15 {
+    background-color: var(--mazeColor);
+    border-style: var(--mazeBorder);
+    border-color: var(--off) /* top */
+                  var(--on) /* right */
+                  var(--off) /* bottom */
+                  var(--off);/* left */
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maze</title>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type = "text/javascript" src="Maze.js"></script>
+    
+    <link rel="stylesheet" href="Maze.css">
+  </head>
+  <body onkeydown="ArrowKeyPressed(event)">
+    
+    <div id="playerNode" class="mainNode" style="position: absolute;"></div>
+    
+    <p id="moveCounter">Move Count: 0</p>
+    <p id="timer">Time >> 00:00:00</p>
+    
+    <img id="comeToDaddy" style="position: absolute; z-index: 1;"
+         src="ComeToDaddy.png" width="100px" height="80px"></img>
+
+  </body>
+</html>
