@@ -1,7 +1,7 @@
 var sideLength = 50;
 var borderWidth = 2;
 
-var gridX = 100;
+var gridX = 450;
 var gridY = 100;
 
 var startJ = -1;
@@ -19,9 +19,9 @@ var currentY = gridY + (sideLength * startI) + borderWidth;
 var moveCount = 0;
 
 var maze = [
-    [7, 8, 8, 8, 13, 6, 7, 6],
-    [11, 7, 6, 7, 6, 10, 9, 11],
-    [10, 9, 11, 11, 8, 8, 6, 11],
+    [7, 8, 8, 8, 8, 6, 7, 6],
+    [11, 7, 6, 7, 4, 10, 9, 11],
+    [10, 9, 11, 14, 8, 8, 6, 11],
     [6, 5, 12, 12, 6, 7, 9, 11],
     [11, 7, 8, 6, 11, 11, 2, 11],
     [10, 9, 2, 11, 3, 11, 10, 15],
@@ -44,7 +44,7 @@ function DrawGrid(){
         for(var j = 0; j < maze[0].length; j++){
 
             var newID = "node" + i + j;
-            var $cln =  CloneNode("#playerNode", newID, "body")
+            var $cln =  CloneNode("#tempNode", newID, "body")
 
             var pX = gridX + (sideLength * j);
             var pY = gridY + (sideLength * i);
@@ -63,6 +63,7 @@ function ArrowKeyPressed(event){
 
         if(AllowMove('L') === true){
 
+            changeImage('L');
             MovePalyer(0, -1);
         }
     }
@@ -70,6 +71,7 @@ function ArrowKeyPressed(event){
 
         if(AllowMove('U') === true){
 
+            changeImage('U');
             MovePalyer(-1, 0);
         }
     }
@@ -77,6 +79,7 @@ function ArrowKeyPressed(event){
         
         if(AllowMove('R') === true){
 
+            changeImage('R');
             MovePalyer(0, 1);
         }
     }
@@ -84,6 +87,7 @@ function ArrowKeyPressed(event){
         
         if(AllowMove('D') === true){
 
+            changeImage('D');
             MovePalyer(1, 0);
         }
     }
@@ -204,7 +208,10 @@ function SetTimer(){
 var TimerID;
 function StartTimer(){
 
-    TimerID = setInterval(SetTimer, 1000);
+    if(TimerID === undefined){
+
+        TimerID = setInterval(SetTimer, 1000);
+    }
 }
 
 function StopTimer(){
@@ -214,10 +221,22 @@ function StopTimer(){
 
 $(document).ready(function(){
     
+    TimerID = undefined;
+
+    $("#tempNode").css({width: sideLength - borderWidth, height: sideLength - borderWidth});
+    DrawGrid();
+    $("#tempNode").hide();
+
     $("#playerNode").css({width: sideLength - borderWidth, height: sideLength - borderWidth});
     $("#playerNode").css({top: currentY, left: currentX});
 
-    DrawGrid();
-
     $("#comeToDaddy").hide();
 });
+
+function changeImage(src)
+{
+    //$("#playerNode").hide();
+    var pln = "Pics/Plane" + src + ".png";
+    $("#playerNode").attr("src", pln);
+    //$("#playerNode").show(1000);
+}

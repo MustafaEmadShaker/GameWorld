@@ -7,16 +7,20 @@
     <script type = "text/javascript" src="Maze.js"></script>
     
     <link rel="stylesheet" href="Maze.css">
+    <link rel="stylesheet" href="Browser.css">
   </head>
   <body onkeydown="ArrowKeyPressed(event)">
+
+    <img src="Pics/Space.png" class="background">
     
-    <div id="playerNode" class="mainNode" style="position: absolute;"></div>
+    <div id="tempNode" style="position: absolute;"></div>
     
-    <p id="moveCounter">Move Count: 0</p>
-    <p id="timer">Time >> 00:00:00</p>
+    <p id="moveCounter" class="moveCounter">Move Count: 0</p>
+    <p id="timer" class="timer">Time >> 00:00:00</p>
     
-    <img id="comeToDaddy" style="position: absolute; z-index: 1;"
-         src="ComeToDaddy.png" width="100px" height="80px"></img>
+    <img id="comeToDaddy" class="winMsg" src="Pics/ComeToDaddy.png" ></img>
+
+    <img id="playerNode" src="Pics/PlaneR.png" class="playerNode">
 
   </body>
 </html>

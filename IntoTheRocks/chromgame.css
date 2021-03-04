@@ -1,0 +1,45 @@
+body {
+    background-image:    url(img/body.webp);
+    background-size:     cover;                   
+    background-repeat:   no-repeat;
+}
+
+#char{
+    position: absolute;
+    bottom: 0px;
+   
+   
+    
+    
+}
+#obs{
+    position: absolute;
+    bottom: 0px;
+    width: 200px;
+    height: 150px;
+    background-image: url(img/ka2n-removebg-preview.png);
+    background-size:     cover;  
+}
+#obsimg{
+   position: absolute;
+    bottom: 0px;
+    width: 200px;
+    height: 1500px;
+   
+    
+    
+}
+#gameOver{
+     width: 200px;
+    height: 200px;
+    background-color: blueviolet;
+    align-content: center;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+    font-size: 50px;
+    font-style: oblique;
+    
+}
