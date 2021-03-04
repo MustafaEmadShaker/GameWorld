@@ -1,141 +1,200 @@
 
-
+var grid, score=0, best;
 
 $(function(){
-    var grid, score=0, best;
-    var empty = [];
-    var expiry_date = new Date('March 15, 2021 11:59:59').toUTCString(); 
+    var tile_width = 110, tile_pad=16;
+    
+var empty = [];
+var expiry_date = new Date('March 15, 2021 11:59:59').toUTCString(); 
 
-    function fillCell(row, col, value){
-        grid[row][col] = value;
-        if(value)
-            $("#"+row+col).html(value); // may change the ids
+function fillCell(row, col, value){
+    // grid[row][col] = value;
+    if(value){
+        if ($('#'+row.toString()+col).length > 0) { //if exists, modify it
+            // console.log("already exists! ", row, col);
+            // $("#"+row+col).remove();
+            $("#"+row+col).addClass("tile_"+value);
+        }
         else
-            $("#"+row+col).html('');
-
-        if(value >= 4096)
-            value = 4096; // just for the color
-        $("#"+row+col).removeClass().addClass("tile").addClass("tile_"+value);
+            $('<div>', {class:'tile row_'+row+' col_'+col +" tile_"+value, id:row.toString()+col, text:value}).appendTo('#game_container');
+    }else{
+        $("#"+row+col).remove();
+        // console.log(row, col);
     }
 
-    function generate_cell(){
-        empty = [];
-        var idx, num;
-        var safe_game_flag = 0; // will be 1 by ANY of these cases: 1)empty.length >1.   2)2 adjacents are same.   
-        //this just away to reduce the work of checking ALL the adjacents every time.
-        // so here check horizontal adjacents
-        var prev = null;
-        for (var r = 0; r<4; r++){
-            prev = null;
-            for (var c = 0; c<4; c++){
-                if (grid[r][c] == 0) 
-                    empty.push([r, c]);
-                if(!safe_game_flag) //if not safe yet, check cases:
-                    if(empty.length > 1 || prev == grid[r][c])
-                        safe_game_flag = 1;
-                    else
-                        prev = grid[r][c];
-            }
-        }
-        // and here check vertical adjacents
-        if(!safe_game_flag){ // && empty.length == 1)// prone to end of game, so ==> Check all adjacents
-            if(empty.length == 1){ // generate it, then compare
-                idx = empty[0];
-                num = (Math.random()<0.5)? 2:4;
-                var r = idx[0];
-                var c = idx[1];
-                fillCell(r, c, num);
-                if((c>1 && grid[r][c-1] == num) || (c<3 && grid[r][c+1] == num) ) //compare its horizontal adjacnts
+    if(value >= 4096)
+        value = 4096; // just for the color
+    $("#"+row+col).addClass("tile").addClass("tile_"+value);
+    // $("#"+row+col).effect( "scale",{ percent: 110 }, 100 );
+
+}
+
+function generate_cell(){
+    empty = [];
+    var idx, num;
+    var safe_game_flag = 0; // will be 1 by ANY of these cases: 1)empty.length >1.   2)2 adjacents are same.   
+    //this just away to reduce the work of checking ALL the adjacents every time.
+    // so here check horizontal adjacents
+    var prev = null;
+    for (var r = 0; r<4; r++){
+        prev = null;
+        for (var c = 0; c<4; c++){
+            if (grid[r][c] == 0) 
+                empty.push([r, c]);
+            if(!safe_game_flag) //if not safe yet, check cases:
+                if(empty.length > 1 || prev == grid[r][c])
                     safe_game_flag = 1;
-            }
-
-            for(var i=0; i<4 && !safe_game_flag; i++){
-                if(grid[1][i] == grid[0][i] || grid[1][i] == grid[2][i] || grid[2][i] == grid[3][i])
-                safe_game_flag = 1;
-            }
-
-            if(!safe_game_flag){ //STILL, then GAME OVER
-                console.log("GAME OVER");
-                return -1;
-            }
-        }
-        else{
-            idx = empty[Math.floor(Math.random() * empty.length)];
-            num = (Math.random()<0.5)? 2:4;
-            fillCell(idx[0], idx[1], num);
-            return idx;
+                else
+                    prev = grid[r][c];
         }
     }
+    // and here check vertical adjacents
+    if(!safe_game_flag){ // && empty.length == 1)// prone to end of game, so ==> Check all adjacents
+        if(empty.length == 1){ // generate it, then compare
+            idx = empty[0];
+            num = (Math.random()<0.5)? 2:4;
+            var r = idx[0];
+            var c = idx[1];
 
-    function moveRow(row, col, prev_val, prev_cell, dir)//dir=1--> left / =-1-->right
-    {
-        var moved_flag = 0;
-        if(grid[row][col] !=0 ){ // then check the 3 possible cases
-            if(prev_val == null){ // 1)Nothing previous to compare with, at least it'll be shifted
-                prev_val = grid[row][col];
-                if(prev_cell != col){
-                    fillCell(row, prev_cell, prev_val);
-                    fillCell(row, col, 0);
-                    moved_flag = 1;
-                }
-            }
-            else if(prev_val == grid[row][col]){ // 2)Same number
-                // score = Math.max(score, 2 * prev_val);
-                score += 2 * prev_val;
-                $("#score").html(score);
-                fillCell(row, prev_cell, 2 * prev_val);
-                fillCell(row, col, 0);
-                prev_cell = prev_cell + dir;
-                prev_val = null; // as it can't be merged again
+            grid[r][c] = num;
+            fillCell(r, c, num);
+            if((c>1 && grid[r][c-1] == num) || (c<3 && grid[r][c+1] == num) ) //compare its horizontal adjacnts
+                safe_game_flag = 1;
+        }
+
+        for(var i=0; i<4 && !safe_game_flag; i++){
+            if(grid[1][i] == grid[0][i] || grid[1][i] == grid[2][i] || grid[2][i] == grid[3][i])
+            safe_game_flag = 1;
+        }
+
+        if(!safe_game_flag){ //STILL, then GAME OVER
+            console.log("GAME OVER");
+            return -1;
+        }
+    }
+    else{
+        idx = empty[Math.floor(Math.random() * empty.length)];
+        num = (Math.random()<0.5)? 2:4;
+        grid[idx[0]][idx[1]] = num;
+        fillCell(idx[0], idx[1], num);
+        // console.log("generated ", idx[0], idx[1]);
+        return idx;
+    }
+}
+
+
+function moveRow(row, col, prev_val, prev_cell, dir)//dir=1--> left / =-1-->right
+{
+    var moved_flag = 0;
+    if(grid[row][col] !=0 ){ // then check the 3 possible cases
+        if(prev_val == null){ // 1)Nothing previous to compare with, at least it'll be shifted
+            prev_val = grid[row][col];
+            if(prev_cell != col){
+                grid[row][prev_cell] = grid[row][col];
+                grid[row][col] = 0;
+                if(dir == 1)//left
+                    $("#"+row+col).animate({'right': (tile_width+tile_pad)*(col-prev_cell)+"px" }, 10*(col-prev_cell), function(){
+                        console.log(row, prev_cell, prev_val);
+                        fillCell(row, prev_cell, prev_val);
+                        fillCell(row, col, 0);
+                    });
+                else
+                    $("#"+row+col).animate({'left': (tile_width+tile_pad)*(prev_cell-col)+"px"  }, 10*(prev_cell-col), function(){
+                        console.log(row, prev_cell, prev_val);
+                        fillCell(row, prev_cell, prev_val);
+                        fillCell(row, col, 0);
+                    });  
                 moved_flag = 1;
             }
-            else{ // 3)Different number
-                prev_cell = prev_cell + dir;
-                if(prev_cell != col){
+        }
+        else if(prev_val == grid[row][col]){ // 2)Same number
+            score += 2 * prev_val;
+            $("#score").html(score);
+            // fillCell(row, prev_cell, 2 * prev_val);
+            // fillCell(row, col, 0);
+            grid[row][prev_cell] = 2 * prev_val;
+            grid[row][col] = 0;
+
+            if(dir == 1)//left
+                $("#"+row+col).animate({'right': (tile_width+tile_pad)*(col-prev_cell)+"px" }, 10*(col-prev_cell), function(){
+                    console.log(row, prev_cell,  2 * prev_val);
+                    fillCell(row, prev_cell, 2 * prev_val);
+                    fillCell(row, col, 0);
+                });
+            else
+                $("#"+row+col).animate({'left': (tile_width+tile_pad)*(prev_cell-col)+"px"  }, 10*(prev_cell-col), function(){
+                    console.log(row, prev_cell,  2 * prev_val);
+                    fillCell(row, prev_cell, 2 * prev_val);
+                    fillCell(row, col, 0);
+                    
+                });  
+            prev_cell = prev_cell + dir;
+            prev_val = null; // as it can't be merged again
+            moved_flag = 1;
+        }
+        else{ // 3)Different number
+            prev_cell = prev_cell + dir;
+            if(prev_cell != col){
+                // fillCell(row, prev_cell, grid[row][col]);
+                // fillCell(row, col, 0);
+                // moved_flag = 1;
+            grid[row][prev_cell] = grid[row][col];
+            grid[row][col] = 0;
+
+            if(dir == 1)//left
+                $("#"+row+col).animate({'right': (tile_width+tile_pad)*(col-prev_cell)+"px" }, 10*(col-prev_cell), function(){
+                    console.log(row, prev_cell, grid[row][col]);
                     fillCell(row, prev_cell, grid[row][col]);
                     fillCell(row, col, 0);
-                    moved_flag = 1;
-                }
-                prev_val = grid[row][prev_cell];
-            }
-        }// else just increment
-        return [prev_val, prev_cell, moved_flag];
-    }
-
-    function moveColumn(row, col, prev_val, prev_cell, dir)//dir=1--> up / =-1-->down
-    {
-        var moved_flag = 0;
-        if(grid[row][col] !=0 ){ // then check the 3 possible cases
-            if(prev_val == null){ // 1)Nothing previous to compare with
-                prev_val = grid[row][col];
-                if(prev_cell != row){
-                    fillCell(prev_cell, col, grid[row][col]);
+                });
+            else
+                $("#"+row+col).animate({'left': (tile_width+tile_pad)*(prev_cell-col)+"px"  }, 10*(prev_cell-col), function(){
+                    console.log(row, prev_cell, grid[row][col]);
+                    fillCell(row, prev_cell, grid[row][col]);
                     fillCell(row, col, 0);
-                    moved_flag = 1;
-                }
+                });  
+            moved_flag = 1;
             }
-            else if(prev_val == grid[row][col]){ // 2)Same number
-                // score = Math.max(score, 2 * prev_val); // max value
-                score += 2 * prev_val; //sum of values
-                $("#score").html(score);
-                fillCell(prev_cell, col, 2 * prev_val);
+            prev_val = grid[row][prev_cell];
+        }
+    }// else just increment
+    return [prev_val, prev_cell, moved_flag];
+}
+
+function moveColumn(row, col, prev_val, prev_cell, dir)//dir=1--> up / =-1-->down
+{
+    var moved_flag = 0;
+    if(grid[row][col] !=0 ){ // then check the 3 possible cases
+        if(prev_val == null){ // 1)Nothing previous to compare with
+            prev_val = grid[row][col];
+            if(prev_cell != row){
+                fillCell(prev_cell, col, grid[row][col]);
                 fillCell(row, col, 0);
-                prev_cell = prev_cell + dir;
-                prev_val = null; // as it can't be merged again
                 moved_flag = 1;
             }
-            else{ // 3)Different number
-                prev_cell = prev_cell + dir;
-                if(prev_cell != row){
-                    fillCell(prev_cell, col, grid[row][col]);
-                    fillCell(row, col, 0);
-                    moved_flag = 1;
-                }
-                prev_val = grid[prev_cell][col];
+        }
+        else if(prev_val == grid[row][col]){ // 2)Same number
+            // score = Math.max(score, 2 * prev_val); // max value
+            score += 2 * prev_val; //sum of values
+            $("#score").html(score);
+            fillCell(prev_cell, col, 2 * prev_val);
+            fillCell(row, col, 0);
+            prev_cell = prev_cell + dir;
+            prev_val = null; // as it can't be merged again
+            moved_flag = 1;
+        }
+        else{ // 3)Different number
+            prev_cell = prev_cell + dir;
+            if(prev_cell != row){
+                fillCell(prev_cell, col, grid[row][col]);
+                fillCell(row, col, 0);
+                moved_flag = 1;
             }
-        }// else just increment
-        return [prev_val, prev_cell, moved_flag];
-    }
+            prev_val = grid[prev_cell][col];
+        }
+    }// else just increment
+    return [prev_val, prev_cell, moved_flag];
+}
 
     best = +(window.$L.getCookie("best_2048"));
     if(best == -1)

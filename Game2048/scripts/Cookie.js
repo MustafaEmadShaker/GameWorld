@@ -2,7 +2,7 @@
 
 (function(window){
     onerror = function(msg,url,l,col,e){
-        console.log(msg);
+        console.log(e);
         return true;
     }
     onload = function(){

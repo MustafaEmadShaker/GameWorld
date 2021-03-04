@@ -1,5 +1,8 @@
 :root {
     --tile_width: 110px;
+    --col1_left: 130px;
+    --col2_left: 252px;
+    --col3_left: 378px;
   }
 body{
     background-color:rgb(196, 246, 253);
@@ -64,7 +67,9 @@ h1{
     border: solid 6px  rgb(187, 173, 160);
     background-color: rgb(187, 173, 160);
     border-radius: 5px;
+    position: relative;
 }
+
 .tile, .empty_tile{
     width: 110px;
     width: var(--tile_width); 
@@ -79,7 +84,32 @@ h1{
     color: rgb(104, 102, 102);
     text-align: center;
     line-height: 110px;  
-    position: relative;  
+    position: absolute;  
+}
+.col_0{
+    left: 0;
+}
+.col_1{
+    left: var(--col1_left);
+}
+.col_2{
+    left: var(--col2_left);
+}
+.col_3{
+    left: var(--col3_left);
+}
+
+.row_0{
+    top: 0;
+}
+.row_1{
+    top: var(--col1_left);
+}
+.row_2{
+    top: var(--col2_left);
+}
+.row_3{
+    top: var(--col3_left);
 }
 
 .tile_2{
