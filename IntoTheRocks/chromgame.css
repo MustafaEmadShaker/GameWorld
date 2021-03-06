@@ -1,23 +1,29 @@
 body {
-    background-image:    url(img/body.webp);
+    background-image:    url(Alaa/Background.png);
+
     background-size:     cover;                   
     background-repeat:   no-repeat;
 }
 
+#score{
+    text-decoration-color:antiquewhite;
+}
+
+
+
 #char{
     position: absolute;
     bottom: 0px;
-   
-   
-    
+    background-image:    url(Alaa/Player.png);
+
+    background-size:     cover;
     
 }
 #obs{
     position: absolute;
     bottom: 0px;
-    width: 200px;
-    height: 150px;
-    background-image: url(img/ka2n-removebg-preview.png);
+    width: 100px;
+    height: 100px;
     background-size:     cover;  
 }
 #obsimg{
@@ -32,7 +38,8 @@ body {
 #gameOver{
      width: 200px;
     height: 200px;
-    background-color: blueviolet;
+    background-image: url(picselected/gameOver.jpg);
+    background-size:     cover;
     align-content: center;
     display: none;
     margin-left: auto;

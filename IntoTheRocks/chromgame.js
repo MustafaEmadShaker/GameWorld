@@ -3,21 +3,22 @@ onload=(function(){
     
 var playerdiv=document.getElementById("char");
 var grad=document.getElementById("gred");   
-var gravity =0.9 ;
+var gravity =0.9;
 var scoreLable=document.getElementById("score");
 var gameOver=document.getElementById("gameOver");
 var score=-1;
 var speed=10000;
+var randonimgnum; 
  
 var isjumping=false;
-    var isGamOver=false;
+var isGamOver=false;
     
  function controll(key){
         if(key.keyCode==32){
-           // if(!isjumping){
+            if(!isjumping){
                 isjumping=true;
                 jump();
-           // }
+            }
             
             
         }
@@ -25,11 +26,12 @@ var isjumping=false;
     }
 document.addEventListener('keyup',controll); 
     var position=0; 
+    
+
+    
+    
 function jump(){
     var count=0; 
-    
-    
-    
     var timerup=setInterval(function(){
         if(count==25){
             clearInterval(timerup);
@@ -69,11 +71,10 @@ function jump(){
      var obstical=document.createElement("div");
      if(!isGamOver)
         obstical.id="obs";
-     
-     
-     var obsticalimg=document.createElement("img");
-     obsticalimg.src="img/boxObstical-removebg-preview.png" ;
-     obsticalimg.id="obsimg";
+     randonimgnum=Math.floor(Math.random() * 3); 
+     obstical.style.backgroundImage = "url('Alaa/"+randonimgnum+".png')"; 
+      
+    
      
      
      
@@ -83,13 +84,8 @@ function jump(){
      
      var obstimer=setInterval(function(){
          
-         if(obsPosition>0 && obsPosition<90&& position<150 ){
+         if(obsPosition>0 && obsPosition<200&& position<150 ){
              clearInterval(obstimer);
-         //   var Over=document.createElement("div");
-        //   Over.id="gameOver";
-      //    gameOver.innerHTML="game Over"
-//               grad.appendChild(gameOver);
-            // alert("game Over and the score is "+score);
             
              isGamOver=true;
               
@@ -114,7 +110,7 @@ function jump(){
         score++;
          scoreLable.innerHTML="Score"+score;
         
-        if(score%5==15
+        if(score%5==15){
             speed-=500;
             randomtime=0;
             randomtime=Math.random()*speed;
