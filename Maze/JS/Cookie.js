@@ -79,7 +79,7 @@ function Cookie(){
                 }
             }
 
-            throw NoCookies;
+            return "=";
         }
     }
 
@@ -123,7 +123,7 @@ function Cookie(){
         }
     }
 
-    this.DeleteAllCookie = function(){
+    this.DeleteAllCookies = function(){
 
         var cArr = this.GetAllCookies();
         for(var i = 0; i < cArr.length; i++){

@@ -4,23 +4,35 @@
     <title>Maze</title>
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type = "text/javascript" src="Maze.js"></script>
     
-    <link rel="stylesheet" href="Maze.css">
-    <link rel="stylesheet" href="Browser.css">
+    <script type = "text/javascript" src="JS/Maze.js"></script>
+    <script type = "text/javascript" src="JS/Cookie.js"></script>
+    <script type = "text/javascript" src="JS/Score.js"></script>
+    <script type = "text/javascript" src="JS/Browser.js"></script>
+    <script type = "text/javascript" src="JS/Timer.js"></script>
+    
+    <link rel="stylesheet" href="CSS/Maze.css">
+    <link rel="stylesheet" href="CSS/Browser.css">
   </head>
   <body onkeydown="ArrowKeyPressed(event)">
 
     <img src="Pics/Space.png" class="background">
     
     <div id="tempNode" style="position: absolute;"></div>
+    <img id="playerNode" src="Pics/PlaneR.png" class="playerNode">
+    <img id="comeToDaddy" class="winMsg" src="Pics/ComeToDaddy.png"></img>
     
     <p id="moveCounter" class="moveCounter">Move Count: 0</p>
     <p id="timer" class="timer">Time >> 00:00:00</p>
-    
-    <img id="comeToDaddy" class="winMsg" src="Pics/ComeToDaddy.png" ></img>
 
-    <img id="playerNode" src="Pics/PlaneR.png" class="playerNode">
+    <p id="hs" class="highScore">HIGH SCORE</p>
+    <p id="hsMove" class="highMove"></p>
+    <p id="hsTime" class="highTime"></p>
+
+    <div class="againTxt" onclick="PlayAgain()">AGAIN</div>
+    <img src="Pics/Again.png" class="again" onclick="PlayAgain()">
+
+    <div id="gameWin" class="msgGame" style="font-size: 80pt;">CONGRATULATIONS</div>
 
   </body>
 </html>

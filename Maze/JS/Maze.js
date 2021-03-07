@@ -57,42 +57,6 @@ function DrawGrid(){
     }
 }
 
-function ArrowKeyPressed(event){
-
-    if(event.keyCode === 37){ //LEFT
-
-        if(AllowMove('L') === true){
-
-            changeImage('L');
-            MovePalyer(0, -1);
-        }
-    }
-    else if(event.keyCode === 38){ //UP
-
-        if(AllowMove('U') === true){
-
-            changeImage('U');
-            MovePalyer(-1, 0);
-        }
-    }
-    else if(event.keyCode === 39){ //RIGHT
-        
-        if(AllowMove('R') === true){
-
-            changeImage('R');
-            MovePalyer(0, 1);
-        }
-    }
-    else if(event.keyCode === 40){ //DOWN
-        
-        if(AllowMove('D') === true){
-
-            changeImage('D');
-            MovePalyer(1, 0);
-        }
-    }
-}
-
 function AllowMove(moveType)
 {
     if(currentJ === startJ && currentI === startI){
@@ -106,7 +70,6 @@ function AllowMove(moveType)
     else{
 
         var node = maze[currentI][currentJ];
-        //console.log(maze[currentI][currentJ]);
         
         if(moveType === 'R'){
 
@@ -157,86 +120,40 @@ function MovePalyer(shiftTop, shiftLeft){
     AddMove();
 }
 
-function AddMove(){
-
-    moveCount++;
-    $("#moveCounter").text("Move Count: " + moveCount);
-
-    if(currentI === finishI && currentJ === finishJ){
-
-        StopTimer();
-
-        $("#comeToDaddy").css({top: currentY - sideLength * 1.5, left: currentX - sideLength * 0});
-        $("#comeToDaddy").show();
-    }
-}
-
-var sec = 0;
-var min = 0;
-var hur = 0;
-function SetTimer(){
-
-    sec++;
-    if(sec === 60){
-
-        sec = 0;
-        min++;
-    }
-    if(min === 60){
-
-        min = 0;
-        hur++;
-    }
-
-    var timeStr = "Time >> ";
-
-    if(hur < 10)
-        timeStr += '0';
-    timeStr += hur + ':';
-
-    if(min < 10)
-        timeStr += '0';
-    timeStr += min + ':';
-
-    if(sec < 10)
-        timeStr += '0';
-    timeStr += sec;
-
-    $("#timer").text(timeStr);
-}
-
-var TimerID;
-function StartTimer(){
-
-    if(TimerID === undefined){
-
-        TimerID = setInterval(SetTimer, 1000);
-    }
-}
-
-function StopTimer(){
-   
-    clearInterval(TimerID);
-}
-
-$(document).ready(function(){
-    
-    TimerID = undefined;
-
-    $("#tempNode").css({width: sideLength - borderWidth, height: sideLength - borderWidth});
-    DrawGrid();
-    $("#tempNode").hide();
-
-    $("#playerNode").css({width: sideLength - borderWidth, height: sideLength - borderWidth});
-    $("#playerNode").css({top: currentY, left: currentX});
-
-    $("#comeToDaddy").hide();
-});
-
+var currentAngle = 90;
 function changeImage(src)
 {
-    //$("#playerNode").hide();
-    var pln = "Pics/Plane" + src + ".png";
-    $("#playerNode").attr("src", pln);
-    //$("#playerNode").show(1000);
+    var angle = currentAngle;
+    if(src === 'U'){
+
+        angle = 0;
+    }
+    else if(src === 'R'){
+
+        angle = 90;
+    }
+    else if(src === 'D'){
+
+        angle = 180;
+    }
+    else if(src === 'L'){
+
+        angle = 270;
+    }
+
+    rotateImage(angle - currentAngle);
+
+    angle = currentAngle;
+
+    //var pln = "Pics/Plane" + src + ".png";
+    //$("#playerNode").attr("src", pln);
+}
+
+function rotateImage(degree){
+
+    $("#playerNode").css({
+
+        '-webkit-transform': 'rotate(' + degree + 'deg)',
+        '-webkit-transition-duration' : '1s'
+    })    
 }
