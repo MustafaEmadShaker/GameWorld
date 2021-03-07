@@ -1,20 +1,45 @@
-body {
-    background-image:    url(Alaa/Background.png);
 
-    background-size:     cover;                   
-    background-repeat:   no-repeat;
+.background {
+    position: fixed; 
+    
+    top: 0; 
+    left: 0; 
+
+    min-width: 100%;
+    min-height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    z-index: -1;
 }
 
-#score{
-    text-decoration-color:antiquewhite;
+.msgGame{
+
+    color: white;
+    font-family: "Comic Sans MS";
+    text-align: center;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+
+    /*-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;*/
 }
+
+
 
 
 
 #char{
     position: absolute;
     bottom: 0px;
-    background-image:    url(Alaa/Player.png);
+    background-image:    url(picture/Player.png);
 
     background-size:     cover;
     
@@ -26,6 +51,14 @@ body {
     height: 100px;
     background-size:     cover;  
 }
+#star{
+    position: absolute;
+    bottom: 325px;
+    width: 100px;
+    height: 100px;
+    background-size:     cover;  
+    
+}
 #obsimg{
    position: absolute;
     bottom: 0px;
@@ -35,10 +68,11 @@ body {
     
     
 }
-#gameOver{
-     width: 200px;
-    height: 200px;
-    background-image: url(picselected/gameOver.jpg);
+
+#wow{
+     width: 220px;
+    height: 220px;
+    background-image: url(picture/g1.gif);
     background-size:     cover;
     align-content: center;
     display: none;
@@ -49,4 +83,48 @@ body {
     font-size: 50px;
     font-style: oblique;
     
+}
+.again{
+
+    position: absolute;
+    top: 15px;
+    left: 940px;
+
+    width: 80px;
+    height: 80px;
+}
+
+.againTxt{
+
+    position: absolute;
+    top: 45px;
+    left: 955px;
+
+    transform: rotate(-45deg);
+    
+    z-index: 1;
+
+    font-size: 9pt;
+    font-family: "Comic Sans MS";
+}
+.score{
+    
+    color: white;
+    font-size: 24pt;
+    font-family: "Comic Sans MS";
+
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.bestScore{
+    
+    color: white;
+    font-size: 24pt;
+    font-family: "Comic Sans MS";
+
+    position: absolute;
+    top: 80px;
+    left: 50px;
 }

@@ -6,19 +6,28 @@
     
      <link rel="stylesheet"href="chromgame.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-           
+     <script src="cookiesException.js"></script>      
     
     
 </head>
 
 <body >
-   
-    <h1 id ="score" ></h1>
-    <div id ="gameOver"> </div>
+   <img src="picture/Background.png" class="background">
+    <div id="scoreandbest">
+    <h1 id ="score" class="score"></h1>
+    <h1 id ="best" class="bestScore" ></h1>
+    </div>
+ 
+    <div id="gameOver" class="msgGame" style="font-size: 100pt;">GAME OVER</div>
+    <div class="againTxt" onclick="PlayAgain()">AGAIN</div>
+    <img src="picture/Again.png" class="again" onclick="PlayAgain()">
+    <div id ="wow"></div>
+    
+    
     <div id="gred" >
     
         
-   <img src="Alaa/Player.png" style="width: 60spx;height: 60px"id="char">
+   <img src="picture/Player.png" style="width: 60spx;height: 60px"id="char">
     
    
     </div>
