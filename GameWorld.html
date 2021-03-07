@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game World</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type = "text/javascript" src="GameWorld.js"></script>
+
+    <link rel="stylesheet" href="GameWorld.css">
+  </head>
+  <body>
+
+    <img id="bg" src="Background.png" class="background">
+
+    <div id="dg" class="divStyle" style="font-size: 100pt;">Game World</div>
+    <div id="d1" class="divStyle" style="font-size: 24pt;">After going to a mission to retrieve the Book of Secrets from Saturn, your team has to go through some obstacles in his way home to Earth.</div>
+    <div id="d2" class="divStyle" style="font-size: 24pt;">These missions include solving the puzzle of 2048 to unlock the Book of Secrets, passing the Narrow Corridor and destroying the brick wall built by aliens, surviving the Asteroid belt, and going through the Infinity Maze.</div>
+    
+    <img id="ms" src="Missions.png" class="background">
+
+    <div id="2048" class="_2048" onclick="f2048()"></div>
+    <div id="narrow" class="_narrow" onclick="fbrick()"></div>
+    <div id="rocks" class="_rocks" onclick="frocks()"></div>
+    <div id="moze" class="_maze" onclick="fmaze()"></div>
+
+  </body>
+</html>
