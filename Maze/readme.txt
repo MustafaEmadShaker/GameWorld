@@ -1,0 +1,1 @@
+first time no score is shown
