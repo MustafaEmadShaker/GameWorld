@@ -47,7 +47,7 @@ function GetCurrenTime(){
 function GetBestScore(crMove){
 
     var ckMove = bsMove;
-    if(crMove < bsMove || bsMove === undefined){
+    if(crMove < bsMove || bsMove === undefined || bsMove === ""){
 
         ckMove = crMove;
     }
@@ -56,7 +56,7 @@ function GetBestScore(crMove){
 
 function GetBesTime(crTime){
 
-    try{
+    if(bsTime !== ""){
 
         var crHur = parseInt(crTime.substring(0, 2));
         var crMin = parseInt(crTime.substring(3, 5));
@@ -91,7 +91,7 @@ function GetBesTime(crTime){
             return bsTime;
         }
     }
-    catch{
+    else{
 
         return crTime;
     }

@@ -1,13 +1,27 @@
 $(document).ready(function(){
     
+    if(history.length === 1){
+
+        StartUp();
+    }
+    else{
+
+        BackToMain();
+    }
+});
+
+function StartUp(){
+
     $("#d1").hide();
     $("#d2").hide();
     $("#ms").hide();
 
+    $("#dg").show();
+
     NextMessage("#dg", "#d1", 3000);
     NextMessage("#d1", "#d2", 7000);
     NextMessage("#d2", "#ms", 11000);
-});
+}
 
 function NextMessage(hd, sh, tm){
 
@@ -19,6 +33,16 @@ function NextMessage(hd, sh, tm){
             $(sh).show(1000);
         }, tm
     );
+}
+
+function BackToMain(){
+
+    $("#d1").hide();
+    $("#d2").hide();
+    $("#dg").hide();
+    $("#bg").hide();
+
+    $("#ms").show();
 }
 
 function fmaze(){
@@ -33,7 +57,7 @@ function fbrick(){
 
 function frocks(){
 
-    window.location.href = 'IntoTheRocks/chromgame.html';
+    window.location.href = 'IntoTheRocks/IntoTheRocks.html';
 }
 
 function f2048(){

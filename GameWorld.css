@@ -30,44 +30,59 @@
 
 ._2048{
 
-    width: 100px;
-    height: 50px;
+    width: 7.5%;
+    height: 8.2%;
 
     position: absolute;
 
-    top: 257px;
-    left: 300px;
+    top: 42%;
+    left: 23.5%;
+
+    /*border: solid 2pt red;*/
 }
 
 ._narrow{
 
-    width: 120px;
-    height: 60px;
+    width: 9%;
+    height: 10%;
 
     position: absolute;
 
-    top: 400px;
-    left: 430px;
+    top: 65.5%;
+    left: 33.5%;
+
+    /*border: solid 2pt red;*/
 }
 
 ._rocks{
 
-    width: 100px;
-    height: 100px;
+    width: 7.8%;
+    height: 16%;
 
     position: absolute;
 
-    top: 282px;
-    left: 730px;
+    top: 46.5%;
+    left: 57%;
+
+    /*border: solid 2pt red;*/
 }
 
 ._maze{
 
-    width: 110px;
-    height: 100px;
+    width: 8.7%;
+    height: 16%;
 
     position: absolute;
 
-    top: 310px;
-    left: 930px;
+    top: 51%;
+    left: 72.5%;
+
+    /*border: solid 2pt red;*/
+}
+
+.rec-position{
+
+    position: absolute;
+    top: 85%;
+    left: 85%;
 }

@@ -114,7 +114,8 @@ function Cookie(){
         var decodedCookie = document.cookie;
         if(decodedCookie === ''){
 
-            throw NoCookies;
+            //throw NoCookies;
+            return '';
         }
         else{
 

@@ -5,6 +5,7 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type = "text/javascript" src="GameWorld.js"></script>
+    <script src="https://api.apowersoft.com/screen-recorder?lang=en" defer></script>
 
     <link rel="stylesheet" href="GameWorld.css">
   </head>
@@ -12,16 +13,27 @@
 
     <img id="bg" src="Background.png" class="background">
 
-    <div id="dg" class="divStyle" style="font-size: 100pt;">Game World</div>
-    <div id="d1" class="divStyle" style="font-size: 24pt;">After going to a mission to retrieve the Book of Secrets from Saturn, your team has to go through some obstacles in his way home to Earth.</div>
-    <div id="d2" class="divStyle" style="font-size: 24pt;">These missions include solving the puzzle of 2048 to unlock the Book of Secrets, passing the Narrow Corridor and destroying the brick wall built by aliens, surviving the Asteroid belt, and going through the Infinity Maze.</div>
+    <div id="dg" class="divStyle" style="font-size: 100pt; display: none;">Game World</div>
+    <div id="d1" class="divStyle" style="font-size: 24pt; display: none;">After going to a mission to retrieve the Book of Secrets from Saturn, your team has to go through some obstacles in his way home to Earth.</div>
+    <div id="d2" class="divStyle" style="font-size: 24pt; display: none;">These missions include solving the puzzle of 2048 to unlock the Book of Secrets, passing the Narrow Corridor and destroying the brick wall built by aliens, surviving the Asteroid belt, and going through the Infinity Maze.</div>
     
-    <img id="ms" src="Missions.png" class="background">
+    <img id="ms" src="Missions.png" class="background" style="display: none;">
 
     <div id="2048" class="_2048" onclick="f2048()"></div>
     <div id="narrow" class="_narrow" onclick="fbrick()"></div>
     <div id="rocks" class="_rocks" onclick="frocks()"></div>
     <div id="moze" class="_maze" onclick="fmaze()"></div>
+
+    <!--<img id="ms" src="Missions.png" class="background" style="display: none;" usemap="#workmap">
+
+    <map name="workmap">
+        <area shape="rect" coords="300,257,400,307" alt="2048" href="Game2048/game_2048.html">
+        <area shape="rect" coords="730,282,830,382" alt="Into The Rocks" href="IntoTheRocks/chromgame.html">
+        <area shape="rect" coords="430,400,550,460" alt="Brick Breaker" href="BrickBreaker/Bricks_Breaker.html">
+        <area shape="rect" coords="930,310,1040,410" alt="Maze" href="Maze/Maze.html">
+    </map>-->
+
+    <div class="start-screen-recording recording-style-black rec-dot rec-position">REC</div>
 
   </body>
 </html>
