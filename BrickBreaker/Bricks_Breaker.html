@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bricks Breaker</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type = "text/javascript" src="Cookie.js"></script>
+    <script type = "text/javascript" src="Score.js"></script>
+
+    <link rel="stylesheet" href="Bricks_Breaker.css">
+</head>
+<body>
+    
+    <img class="background" src="Background.png">
+    <div id="mydiv">
+        <div id="cont"></div>
+        <div id="score" class="score"></div>
+        <div id="live" class="score"></div>
+        <div id="timeCount" class="score"></div>
+        <div id="playerNode" class="mainNode"></div>
+        <div id="paddle"></div>
+    </div>
+    <br><br><br><br><br><br>
+    <div id="gameName">Bricks Breaker</div>
+
+    <div id="gameOver" class="msgGame" style="font-size: 100pt;">GAME OVER</div>
+    <div id="gameWin" class="msgGame" style="font-size: 80pt;">CONGRATULATIONS</div>
+
+    <div class="againTxt" onclick="PlayAgain()">AGAIN</div>
+    <img src="Again.png" class="again" onclick="PlayAgain()">
+    
+    <p id="hs" class="highScore">HIGH SCORE</p>
+    <p id="hsMove" class="highMove"></p>
+    <p id="hsTime" class="highTime"></p>
+
+    <script src="Bricks_Breaker.js"></script>
+
+</body></html>
