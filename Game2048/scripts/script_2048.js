@@ -17,9 +17,10 @@ $(function(){
                 [0,0,0,0], //up & down
                 [0,0,0,0],
                 [0,0,0,0]];//up
+
         achieved_flag = 0;
         animation_times = 0;
-        
+
         hideMsg();
         //remove any previous cells
         $("#last").nextAll().remove();
