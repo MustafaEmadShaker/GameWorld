@@ -1,3 +1,4 @@
+
 onload=(function (){    
   hideMsg();  
 var playerdiv=document.getElementById("char");
@@ -6,7 +7,7 @@ var gravity =0.9;
 var scoreLable=document.getElementById("score");
 var gameOver=document.getElementById("gameOver");
 var score=0;
-var speed=25000;
+var speed=8000;
 var randonimgnum; 
 var best;
 var position=0; 
@@ -133,10 +134,13 @@ function jump(){
     
     
     var obspositionspeed=10;
+    var previouseTime;
     //var obsflag=false;
     function createObstical(){
-    
-     var randomtime=Math.random()*speed;   
+     do{
+     var randomtime=Math.random()*speed;
+         console.log("random",randomtime);
+     }while(randomtime<2000.738050561946);
      var  obsPosition=1000;
      var obstical=document.createElement("div");
      if(!isGamOver)
@@ -153,6 +157,17 @@ function jump(){
      var obstimer=setInterval(function(){
         
          if(obsPosition>0 && obsPosition<200&& position<70 ){
+
+            scoreLable.innerHTML="Score"+":"+score;
+            if(score>best)
+            {
+                best=parseInt(score);
+                $("#best").html("Best Score"+":"+best);
+                // console.log(best);
+                
+                window.setCookie("best_cheromGame",best,expireDate);
+            }
+
              clearInterval(obstimer);
             
              isGamOver=true;
@@ -176,24 +191,26 @@ function jump(){
      },20);
    
   if(!isGamOver){
-        score++;
         scoreLable.innerHTML="Score"+":"+score;
         if(score>best)
-            {
+        {
             best=parseInt(score);
             $("#best").html("Best Score"+":"+best);
                // console.log(best);
                
             window.setCookie("best_cheromGame",best,expireDate);
-            }
+        }
+        score++;
        // obsflag=false;
         if(score%5==0){
-            speed-=200;
-            obspositionspeed+=0.5;
-            interverSecond-=3;
+            //speed-=200;
+            obspositionspeed+=0.9;
+            interverSecond-=5;
             randomtime=0;
             randomtime=Math.random()*speed;
         }
+        previouseTime=randomtime;
+      console.log("prev",previouseTime);
         setTimeout(createObstical,randomtime); 
         
       }

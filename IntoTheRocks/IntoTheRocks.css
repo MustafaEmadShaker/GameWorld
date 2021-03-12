@@ -1,4 +1,3 @@
-
 .background {
     position: fixed; 
     
@@ -15,62 +14,51 @@
 }
 
 .msgGame{
-
     color: white;
     font-family: "Comic Sans MS";
     text-align: center;
-
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    display: none;
-
-    /*-webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;*/
+  
 }
-
-
-
-
 
 #char{
     position: absolute;
     bottom: 0px;
-    background-image:    url(picture/Player.png);
+    background-image: url(picture/Player.png);
 
-    background-size:     cover;
-    
+    background-size: cover;
 }
+
 #obs{
     position: absolute;
     bottom: 0px;
     width: 100px;
     height: 100px;
-    background-size:     cover;  
+    background-size: cover;  
 }
+
 #star{
     position: absolute;
     bottom: 325px;
     width: 100px;
     height: 100px;
-    background-size:     cover;  
-    
+    background-size: cover;  
 }
+
 #obsimg{
-   position: absolute;
+    position: absolute;
     bottom: 0px;
     width: 200px;
-    height: 1500px;
-   
-    
-    
+    height: 1500px; 
 }
 
 #wow{
-     width: 220px;
+    width: 220px;
     height: 220px;
     background-image: url(picture/g1.gif);
     background-size:     cover;
@@ -82,10 +70,9 @@
     text-align: center;
     font-size: 50px;
     font-style: oblique;
-    
 }
-.again{
 
+.again{
     position: absolute;
     top: 15px;
     left: 940px;
@@ -95,7 +82,6 @@
 }
 
 .againTxt{
-
     position: absolute;
     top: 45px;
     left: 955px;
@@ -108,7 +94,6 @@
     font-family: "Comic Sans MS";
 }
 .score{
-    
     color: white;
     font-size: 24pt;
     font-family: "Comic Sans MS";
@@ -119,7 +104,6 @@
 }
 
 .bestScore{
-    
     color: white;
     font-size: 24pt;
     font-family: "Comic Sans MS";
